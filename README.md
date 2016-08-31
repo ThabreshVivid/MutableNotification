@@ -3,23 +3,21 @@
 Please provide Local or Remote notification method in AppDelegate.m,
 
 
-#### Creating a Data Task
+#### if the notification is Local 
 
 ```objective-c
-NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
-NSURL *URL = [NSURL URLWithString:@"http://httpbin.org/get"];
-NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-
-NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-    if (error) {
-        NSLog(@"Error: %@", error);
-    } else {
-        NSLog(@"%@ %@", response, responseObject);
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+    if ([identifier isEqualToString:NotificationActionOneIdent]) {
+        NSLog(@"You choosed YES.");
+        application.applicationIconBadgeNumber = 0;
     }
-}];
-[dataTask resume];
+else if ([identifier isEqualToString:NotificationActionTwoIdent]) {
+        NSLog(@"You choosed NO.");
+    }
+if (completionHandler) {
+        completionHandler();
+    }
+}
 ```
 
 ---
