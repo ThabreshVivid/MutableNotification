@@ -23,7 +23,8 @@ if the notification is Remote
     if ([identifier isEqualToString:NotificationActionOneIdent]) {
         NSLog(@"You choosed YES.");
         application.applicationIconBadgeNumber = 0;
-    }else if ([identifier isEqualToString:NotificationActionTwoIdent]) {
+    }
+else if ([identifier isEqualToString:NotificationActionTwoIdent]) {
         NSLog(@"You choosed NO.");
     }if (completionHandler) {
         completionHandler();
